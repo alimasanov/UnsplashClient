@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.alimasanov.unsplash.R
 
-class NotificationsFragment : Fragment() {
+class InfoFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
