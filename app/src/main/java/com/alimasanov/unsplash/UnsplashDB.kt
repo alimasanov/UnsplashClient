@@ -35,7 +35,7 @@ class UnsplashDB(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB
 
     fun getPhoto(link : String) {
         val db this.readableDatabase
-        return db.rawQuery("SELECT * FROM ")
+        return db.rawQuery("SELECT * FROM ", null)
     }
 
     companion object{
