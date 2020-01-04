@@ -5,7 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class UnsplashDB(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
+class UnsplashDB(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_UNSPLASH_TABLE = "CREATE TABLE $TABLE_NAME (" +
@@ -21,8 +21,8 @@ class UnsplashDB(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB
         onCreate(db)
     }
 
-    fun addPhoto(link : String, description : String, location : String) {
-        val values : ContentValues()
+    fun addPhoto(link: String, description: String, location: String) {
+        val values: ContentValues()
 
         values.put(COLUMN_PHOTO, link)
         values.put(COLUMN_DESCRIPTION, description)
@@ -33,7 +33,7 @@ class UnsplashDB(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB
         db.close()
     }
 
-    fun getPhoto(link : String) {
+    fun getPhoto(link: String) {
         val db this.readableDatabase
         return db.rawQuery("SELECT * FROM ", null)
     }
