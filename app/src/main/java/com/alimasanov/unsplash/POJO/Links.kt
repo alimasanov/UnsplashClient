@@ -1,8 +1,8 @@
 package com.alimasanov.unsplash.POJO
 
 data class Links(
-    var download: String? = null,
-    var download_location: String? = null,
-    var html: String? = null,
-    var self: String? = null
+    val download: String? = null,
+    val download_location: String? = null,
+    val html: String? = null,
+    val self: String? = null
 )

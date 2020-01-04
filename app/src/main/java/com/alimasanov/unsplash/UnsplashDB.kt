@@ -2,50 +2,57 @@ package com.alimasanov.unsplash
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.alimasanov.unsplash.POJO.Photo
 
 class UnsplashDB(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
-    override fun onCreate(db: SQLiteDatabase?) {
-        val CREATE_UNSPLASH_TABLE = "CREATE TABLE $TABLE_NAME (" +
+    override fun onCreate(db: SQLiteDatabase) {
+        val createUnsplashTable = "CREATE TABLE $TABLE_NAME (" +
                                     "   $COLUMN_ID              INTEGER PRIMARY KEY,    " +
                                     "   $COLUMN_PHOTO           TEXT,                   " +
                                     "   $COLUMN_DESCRIPTION     TEXT,                   " +
                                     "   $COLUMN_LOCATION        TEXT)                   "
-        db.execSQL(CREATE_UNSPLASH_TABLE)
+        db.execSQL(createUnsplashTable)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
         onCreate(db)
     }
 
-    fun addPhoto(link: String, description: String, location: String) {
-        val values: ContentValues()
+    fun addPhoto(photo: Photo) {
+        val values = ContentValues()
 
-        values.put(COLUMN_PHOTO, link)
-        values.put(COLUMN_DESCRIPTION, description)
-        values.put(COLUMN_LOCATION, location)
+        values.put(COLUMN_PHOTO, photo.id)
 
-        val db this.writableDatabase
+        val db = this.writableDatabase
         db.insert(TABLE_NAME, null, values)
         db.close()
     }
 
-    fun getPhoto(link: String) {
-        val db this.readableDatabase
-        return db.rawQuery("SELECT * FROM ", null)
+    fun getPhoto(photo: Photo): Cursor? {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM $TABLE_NAME " +
+                                "WHERE $COLUMN_PHOTO = '${photo.id}'",
+            null)
     }
 
-    companion object{
+    fun getAllPhoto(): Cursor? {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM $TABLE_NAME", null)
+    }
+
+    companion object {
         const val DB_NAME = "UnsplashSavedPhoto.db"
         const val DB_VERSION = 1
 
-        val TABLE_NAME = "Photos"
-        val COLUMN_ID = "ID"
-        val COLUMN_PHOTO = "Photo link"
-        val COLUMN_DESCRIPTION = "Description"
-        val COLUMN_LOCATION = "Location"
+        const val TABLE_NAME = "Photos"
+        const val COLUMN_ID = "ID"
+        const val COLUMN_PHOTO = "ID Photo"
+        const val COLUMN_DESCRIPTION = "Description"
+        const val COLUMN_LOCATION = "Location"
     }
 }

@@ -1,9 +1,9 @@
 package com.alimasanov.unsplash.POJO
 
 data class Urls(
-    var full: String? = null,
-    var raw: String? = null,
-    var regular: String? = null,
-    var small: String? = null,
-    var thumb: String? = null
+    val full: String? = null,
+    val raw: String? = null,
+    val regular: String? = null,
+    val small: String? = null,
+    val thumb: String? = null
 )

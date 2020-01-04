@@ -1,15 +1,15 @@
 package com.alimasanov.unsplash.POJO
 
 data class User(
-    var bio: String? = null,
-    var id: String? = null,
-    var location: String? = null,
-    var name: String? = null,
-    var portfolio_url: String? = null,
-    var total_collections: Int? = null,
-    var total_likes: Int? = null,
-    var total_photos: Int? = null,
-    var updated_at: String? = null,
-    var username: String? = null,
-    var links: UserLinks? = null
+    val bio: String? = null,
+    val id: String? = null,
+    val location: String? = null,
+    val name: String? = null,
+    val portfolio_url: String? = null,
+    val total_collections: Int? = null,
+    val total_likes: Int? = null,
+    val total_photos: Int? = null,
+    val updated_at: String? = null,
+    val username: String? = null,
+    val links: UserLinks? = null
 )
