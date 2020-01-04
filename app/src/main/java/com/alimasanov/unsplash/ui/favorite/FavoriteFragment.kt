@@ -1,4 +1,4 @@
-package com.alimasanov.unsplash.ui.home
+package com.alimasanov.unsplash.ui.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater

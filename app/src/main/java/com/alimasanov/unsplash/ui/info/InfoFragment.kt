@@ -1,4 +1,4 @@
-package com.alimasanov.unsplash.ui.notifications
+package com.alimasanov.unsplash.ui.info
 
 import android.os.Bundle
 import android.view.LayoutInflater

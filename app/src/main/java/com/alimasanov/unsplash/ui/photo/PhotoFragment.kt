@@ -1,4 +1,4 @@
-package com.alimasanov.unsplash.ui.dashboard
+package com.alimasanov.unsplash.ui.photo
 
 import android.os.Bundle
 import android.view.LayoutInflater
