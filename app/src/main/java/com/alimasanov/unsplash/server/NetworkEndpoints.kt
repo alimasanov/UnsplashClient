@@ -1,6 +1,6 @@
 package com.alimasanov.unsplash.server
 
-import com.alimasanov.unsplash.POJO.Photo
+import com.alimasanov.unsplash.server.POJO.Photo
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,4 +1,4 @@
-package com.alimasanov.unsplash.POJO
+package com.alimasanov.unsplash.server.POJO
 
 data class Links(
     val download: String? = null,

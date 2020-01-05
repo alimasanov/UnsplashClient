@@ -1,13 +1,16 @@
-package com.alimasanov.unsplash
+package com.alimasanov.unsplash.DB
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.alimasanov.unsplash.POJO.Photo
+import com.alimasanov.unsplash.server.POJO.Photo
 
-class UnsplashDB(context: Context): SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
+class UnsplashDB(context: Context): SQLiteOpenHelper(context,
+    DB_NAME, null,
+    DB_VERSION
+) {
 
     override fun onCreate(db: SQLiteDatabase) {
         val createUnsplashTable = "CREATE TABLE $TABLE_NAME (" +

@@ -1,4 +1,4 @@
-package com.alimasanov.unsplash.POJO
+package com.alimasanov.unsplash.server.POJO
 
 data class UserLinks(
     val html: String? = null,
