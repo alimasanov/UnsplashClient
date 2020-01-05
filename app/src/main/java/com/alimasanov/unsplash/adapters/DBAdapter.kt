@@ -34,8 +34,7 @@ class DBAdapter(val context: Context?,
 
         holder.card_desc.text = description
         holder.card_location.text = location
-        Picasso
-            .with(context)
+        Picasso.get()
             .load(image_link)
             .placeholder(R.drawable.ic_picasso_placeholder)
             .error(R.drawable.ic_picasso_error)
