@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.alimasanov.unsplash.server.POJO.Photo
 
-class UnsplashDB(context: Context): SQLiteOpenHelper(context,
+class UnsplashDB(context: Context?): SQLiteOpenHelper(context,
     DB_NAME, null,
     DB_VERSION
 ) {
@@ -54,7 +54,7 @@ class UnsplashDB(context: Context): SQLiteOpenHelper(context,
 
         const val TABLE_NAME = "Photos"
         const val COLUMN_ID = "ID"
-        const val COLUMN_PHOTO = "ID Photo"
+        const val COLUMN_PHOTO = "ID_Photo"
         const val COLUMN_DESCRIPTION = "Description"
         const val COLUMN_LOCATION = "Location"
     }

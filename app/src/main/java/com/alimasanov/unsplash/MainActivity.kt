@@ -7,6 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.alimasanov.unsplash.DB.UnsplashDB
+import com.alimasanov.unsplash.adapters.DBAdapter
 
 class MainActivity : AppCompatActivity() {
 

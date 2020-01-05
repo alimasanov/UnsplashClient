@@ -12,8 +12,8 @@ import com.alimasanov.unsplash.DB.UnsplashDB
 import com.alimasanov.unsplash.R
 import com.squareup.picasso.Picasso
 
-class DBAdapter(val context: Context,
-                val cursor: Cursor): RecyclerView.Adapter<DBAdapter.DBViewHolder>() {
+class DBAdapter(val context: Context?,
+                val cursor: Cursor?): RecyclerView.Adapter<DBAdapter.DBViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = DBViewHolder(LayoutInflater
@@ -21,11 +21,11 @@ class DBAdapter(val context: Context,
                         .inflate(R.layout.fav_item, parent, false))
 
     override fun getItemCount(): Int {
-        return cursor.count
+        return cursor!!.count
     }
 
     override fun onBindViewHolder(holder: DBViewHolder, position: Int) {
-        if(!cursor.moveToPosition(position)) {
+        if(!cursor!!.moveToPosition(position)) {
             return
         }
         val image_link: String = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_PHOTO))
@@ -37,6 +37,8 @@ class DBAdapter(val context: Context,
         Picasso
             .with(context)
             .load(image_link)
+            .placeholder(R.drawable.ic_picasso_placeholder)
+            .error(R.drawable.ic_picasso_error)
             .into(holder.card_image)
     }
 
