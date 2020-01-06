@@ -11,7 +11,7 @@ import com.alimasanov.unsplash.R
 import com.alimasanov.unsplash.server.POJO.Photo
 import com.squareup.picasso.Picasso
 
-class UnsplashAdapter(context: Context, val photos: List<Photo>):
+class UnsplashAdapter(context: Context?, val photos: List<Photo>?):
     RecyclerView.Adapter<UnsplashAdapter.UnsplashViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = UnsplashViewHolder(LayoutInflater
@@ -19,11 +19,11 @@ class UnsplashAdapter(context: Context, val photos: List<Photo>):
                                 .inflate(R.layout.photo_item, parent, false))
 
     override fun getItemCount(): Int {
-        return photos.count()
+        return photos!!.count()
     }
 
     override fun onBindViewHolder(holder: UnsplashViewHolder, position: Int) {
-        val photo: Photo = photos.get(position)
+        val photo: Photo = photos!![position]
 
         val cardImageLink: String? = photo.urls?.regular
         val cardDesc: String? = photo.description
