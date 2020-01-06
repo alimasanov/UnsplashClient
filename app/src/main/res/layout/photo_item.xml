@@ -36,6 +36,7 @@
                 android:gravity="center_vertical">
 
                 <LinearLayout
+                    android:id="@+id/ll_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -45,10 +46,10 @@
                         android:id="@+id/card_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorBlack"
-                        android:text="A man drinking a coffee"/>
+                        android:textColor="@color/colorBlack"/>
 
                     <LinearLayout
+                        android:id="@+id/ll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -65,7 +66,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorGrey"
-                            android:text="Montreal, Canada"
                             android:textSize="@dimen/location_text_size" />
                     </LinearLayout>
                 </LinearLayout>
