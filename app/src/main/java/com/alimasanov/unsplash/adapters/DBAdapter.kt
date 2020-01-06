@@ -18,7 +18,7 @@ class DBAdapter(val context: Context?,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = DBViewHolder(LayoutInflater
                         .from(parent.context)
-                        .inflate(R.layout.fav_item, parent, false))
+                        .inflate(R.layout.photo_item, parent, false))
 
     override fun getItemCount(): Int {
         return cursor!!.count
