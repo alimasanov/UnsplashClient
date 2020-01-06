@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/full_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rick_and_morty_image"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ff_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextIcon"
+            android:text="Description:"/>
+
+        <TextView
+            android:id="@+id/ff_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextIcon"
+            android:text="@string/fa_location"/>
+
+        <TextView
+            android:id="@+id/ff_created_at"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextIcon"
+            android:text="@string/fa_created_at"/>
+
+        <TextView
+            android:id="@+id/ff_updated_at"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fa_updated_at"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ff_width"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="W"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="x"/>
+
+            <TextView
+                android:id="@+id/ff_height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="H"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ff_likes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextIcon"
+            android:text="@string/fa_likes"/>
+
+        <TextView
+            android:id="@+id/ff_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextIcon"
+            android:text="@string/fa_download"/>
+
+        <TextView
+            android:id="@+id/ff_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextIcon"
+            android:text="@string/fa_username"/>
+
+    </LinearLayout>
+
+</LinearLayout>

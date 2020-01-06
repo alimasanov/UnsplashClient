@@ -6,4 +6,14 @@
     <string name="title_info">Info</string>
     <string name="title_photo">Photo</string>
     <string name="title_favorite">Favorite</string>
+
+    <string name="title_activity_fullscreen_photo">FullscreenPhoto</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="fa_download">\uf019</string>
+    <string name="fa_location">\uf124</string>
+    <string name="fa_likes">\uf004</string>
+    <string name="fa_created_at">\uf0fe</string>
+    <string name="fa_updated_at">\uf044</string>
+    <string name="fa_username">\uf007</string>
 </resources>
