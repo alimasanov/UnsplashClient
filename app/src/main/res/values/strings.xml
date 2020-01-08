@@ -16,4 +16,9 @@
     <string name="fa_created_at">\uf0fe</string>
     <string name="fa_updated_at">\uf044</string>
     <string name="fa_username">\uf007</string>
+    <string name="fa_title">Description:</string>
+    <string name="fa_width">W</string>
+    <string name="fa_x">x</string>
+    <string name="fa_height">H</string>
+    <string name="todo">TODO</string>
 </resources>

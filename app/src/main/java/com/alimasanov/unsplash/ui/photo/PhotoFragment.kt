@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.R
 import com.alimasanov.unsplash.adapters.UnsplashAdapter
 import com.alimasanov.unsplash.server.NetworkEndpoints
-import com.alimasanov.unsplash.server.POJO.Photo
+import com.alimasanov.unsplash.server.pojo.Photo
 import com.alimasanov.unsplash.server.UnsplashClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,7 +36,7 @@ class PhotoFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<List<Photo>>, response: Response<List<Photo>>) {
-                val unsplashAdapter: UnsplashAdapter = UnsplashAdapter(context, response.body())
+                val unsplashAdapter = UnsplashAdapter(context, response.body())
                 recyclerView.adapter = unsplashAdapter
             }
         })

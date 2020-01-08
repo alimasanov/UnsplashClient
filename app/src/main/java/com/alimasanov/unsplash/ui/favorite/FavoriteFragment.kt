@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alimasanov.unsplash.DB.UnsplashDB
+import com.alimasanov.unsplash.db.UnsplashDB
 import com.alimasanov.unsplash.R
 import com.alimasanov.unsplash.adapters.DBAdapter
 
@@ -25,13 +25,13 @@ class FavoriteFragment : Fragment() {
         val db: SQLiteDatabase = unsplashDB!!.writableDatabase
         val recyclerView: RecyclerView = root.findViewById(R.id.fav_rv)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val dbAdapter: DBAdapter = DBAdapter(context, getAllItems(db))
+        val dbAdapter = DBAdapter(context, getAllItems(db))
         recyclerView.adapter = dbAdapter
 
         return root
     }
 
-    fun getAllItems(db: SQLiteDatabase): Cursor? {
+    private fun getAllItems(db: SQLiteDatabase): Cursor? {
         return db.query(UnsplashDB.TABLE_NAME,
             null,
             null,

@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class UnsplashClient {
-    var retrofit: Retrofit? = null
+    private var retrofit: Retrofit? = null
     fun getUnsplashClient(): Retrofit {
         if(retrofit == null) {
            val client: OkHttpClient = OkHttpClient

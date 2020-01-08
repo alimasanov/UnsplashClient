@@ -8,16 +8,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.alimasanov.unsplash.DB.UnsplashDB
+import com.alimasanov.unsplash.db.UnsplashDB
 import com.alimasanov.unsplash.R
 import com.squareup.picasso.Picasso
 
-class DBAdapter(val context: Context?,
-                val cursor: Cursor?): RecyclerView.Adapter<DBAdapter.DBViewHolder>() {
+class DBAdapter(private val context: Context?,
+                private val cursor: Cursor?): RecyclerView.Adapter<DBAdapter.DBViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = DBViewHolder(LayoutInflater
-                        .from(parent.context)
+                        .from(context)
                         .inflate(R.layout.photo_item, parent, false))
 
     override fun getItemCount(): Int {
@@ -28,14 +28,14 @@ class DBAdapter(val context: Context?,
         if(!cursor!!.moveToPosition(position)) {
             return
         }
-        val image_link: String = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_PHOTO))
+        val imageLink: String = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_PHOTO))
         val description: String = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_DESCRIPTION))
         val location: String = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_LOCATION))
 
         holder.card_desc.text = description
         holder.card_location.text = location
         Picasso.get()
-            .load(image_link)
+            .load(imageLink)
             .placeholder(R.drawable.ic_picasso_placeholder)
             .error(R.drawable.ic_picasso_error)
             .into(holder.card_image)

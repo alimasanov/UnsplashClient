@@ -8,7 +8,8 @@
         android:id="@+id/full_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/rick_and_morty_image"/>
+        android:src="@drawable/rick_and_morty_image"
+        android:contentDescription="@string/todo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/TextIcon"
-            android:text="Description:"/>
+            android:text="@string/fa_title"/>
 
         <TextView
             android:id="@+id/ff_location"
@@ -52,18 +53,18 @@
                 android:id="@+id/ff_width"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="W"/>
+                android:text="@string/fa_width"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="x"/>
+                android:text="@string/fa_x"/>
 
             <TextView
                 android:id="@+id/ff_height"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="H"/>
+                android:text="@string/fa_height"/>
         </LinearLayout>
 
         <TextView

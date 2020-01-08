@@ -10,11 +10,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.R
-import com.alimasanov.unsplash.server.POJO.Photo
+import com.alimasanov.unsplash.server.pojo.Photo
 import com.alimasanov.unsplash.ui.FullScreenActivity
 import com.squareup.picasso.Picasso
 
-class UnsplashAdapter(context: Context?, var photos: List<Photo>?):
+class UnsplashAdapter(private val context: Context?, private var photos: List<Photo>?):
     RecyclerView.Adapter<UnsplashAdapter.UnsplashViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = UnsplashViewHolder(LayoutInflater
@@ -40,15 +40,14 @@ class UnsplashAdapter(context: Context?, var photos: List<Photo>?):
         }
         else holder.card_desc.text = cardDesc
 
-        val cardLoc: String? = "${photo.location?.country}, ${photo.location?.city}"
-        if (photo.location?.country !== null && photo.location?.city !== null){
-            val cardLoc: String? = "${photo.location?.country}, ${photo.location?.city}"
+        if (photo.location?.country !== null && photo.location.city !== null){
+            val cardLoc: String? = "${photo.location.country}, ${photo.location.city}"
             holder.card_location.text = cardLoc
         } else if(photo.location?.country == null && photo.location?.city !== null){
-            val cardLoc: String? = photo.location?.city
+            val cardLoc: String? = photo.location.city
             holder.card_location.text = cardLoc
-        } else if(photo.location?.country !== null && photo.location?.city == null){
-            val cardLoc: String? = photo.location?.country
+        } else if(photo.location?.country !== null && photo.location.city == null){
+            val cardLoc: String? = photo.location.country
             holder.card_location.text = cardLoc
         } else holder.ll.removeAllViews()
 
@@ -63,7 +62,7 @@ class UnsplashAdapter(context: Context?, var photos: List<Photo>?):
             intent.putExtra("Likes", photo.likes)
             intent.putExtra("Downloads", photo.downloads)
             intent.putExtra("Username", photo.user!!.username)
-            intent.putExtra("Location", "${photo.location!!.country}, ${photo.location!!.city}")
+            intent.putExtra("Location", "${photo.location!!.country}, ${photo.location.city}")
             it.context.startActivity(intent)
         }
 
@@ -73,7 +72,6 @@ class UnsplashAdapter(context: Context?, var photos: List<Photo>?):
                              val card_image: ImageView = itemView.findViewById(R.id.card_image),
                              val card_desc: TextView = itemView.findViewById(R.id.card_desc),
                              val card_location: TextView = itemView.findViewById(R.id.card_location),
-                             val card_image_location: ImageView = itemView.findViewById(R.id.image_location),
                              val ll_main: LinearLayout = itemView.findViewById(R.id.ll_main),
                              val ll: LinearLayout = itemView.findViewById(R.id.ll)):
         RecyclerView.ViewHolder(itemView)
