@@ -27,7 +27,12 @@ class FullScreenActivity: AppCompatActivity(){
         val downloads: TextView = findViewById(R.id.ff_download)
         val username: TextView = findViewById(R.id.ff_username)
 
-        //нужно проинициализировать линеры их дохуя
+        val linearLocation: LinearLayout = findViewById(R.id.linear_loacation)
+        val linearCreatedAt: LinearLayout = findViewById(R.id.linear_created_at)
+        val linearUpdatedAt: LinearLayout = findViewById(R.id.linear_updated_at)
+        val linearLikes: LinearLayout = findViewById(R.id.linear_likes)
+        val linearDownloads: LinearLayout = findViewById(R.id.linear_downloads)
+        val linearUsername: LinearLayout = findViewById(R.id.linear_username)
 
         val link: String = bundle!!.get("LinkPhoto").toString()
         Picasso.get()
@@ -41,15 +46,30 @@ class FullScreenActivity: AppCompatActivity(){
         } else description.text = ("Description: ${bundle.get("Description").toString()}")
 
         if(bundle.get("Location").toString() == null) {
+            linearLocation.removeAllViews()
+        } else location.text = bundle.get("Location").toString()
 
-        }
-        location.text = bundle.get("Location").toString()
-        createdAt.text = ("${R.string.fa_created_at} ${bundle.get("CreatedAt").toString()}")
-        updatedAt.text = ("${R.string.fa_updated_at} ${bundle.get("UpdatedAt").toString()}")
-        width.text = ("${R.string.fa_width} ${bundle.get("Width").toString()}")
-        height.text = ("${R.string.fa_height} ${bundle.get("Height").toString()}")
-        likes.text = ("${R.string.fa_likes} ${bundle.get("Likes").toString()}")
-        downloads.text = ("${R.string.fa_download} ${bundle.get("Downloads").toString()}")
-        username.text = ("${R.string.fa_username} ${bundle.get("Username").toString()}")
+        if(bundle.get("CreatedAt").toString() == null) {
+            linearCreatedAt.removeAllViews()
+        } else createdAt.text = bundle.get("CreatedAt").toString()
+
+        if(bundle.get("UpdatedAt").toString() == null) {
+            linearUpdatedAt.removeAllViews()
+        } else updatedAt.text = bundle.get("UpdatedAt").toString()
+
+        width.text = bundle.get("Width").toString()
+        height.text = bundle.get("Height").toString()
+
+        if(bundle.get("Likes").toString() == null) {
+            linearLikes.removeAllViews()
+        } else likes.text = bundle.get("Likes").toString()
+
+        if(bundle.get("Downloads").toString() == null) {
+            linearDownloads.removeAllViews()
+        } else downloads.text = bundle.get("Downloads").toString()
+
+        if(bundle.get("Username").toString() == null) {
+            linearUsername.removeAllViews()
+        } else username.text = bundle.get("Username").toString()
     }
 }

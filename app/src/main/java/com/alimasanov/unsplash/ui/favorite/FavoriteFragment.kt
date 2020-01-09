@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.db.UnsplashDB
@@ -24,7 +25,9 @@ class FavoriteFragment : Fragment() {
         val unsplashDB: UnsplashDB? = UnsplashDB(context)
         val db: SQLiteDatabase = unsplashDB!!.writableDatabase
         val recyclerView: RecyclerView = root.findViewById(R.id.fav_rv)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.apply {
+            layoutManager = GridLayoutManager(context, 2)
+        }
         val dbAdapter = DBAdapter(context, getAllItems(db))
         recyclerView.adapter = dbAdapter
 

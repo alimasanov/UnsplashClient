@@ -1,6 +1,7 @@
 package com.alimasanov.unsplash.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.db.UnsplashDB
 import com.alimasanov.unsplash.R
+import com.alimasanov.unsplash.ui.FullScreenActivity
 import com.squareup.picasso.Picasso
 
 class DBAdapter(private val context: Context?,
@@ -28,17 +30,25 @@ class DBAdapter(private val context: Context?,
         if(!cursor!!.moveToPosition(position)) {
             return
         }
-        val imageLink: String = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_PHOTO))
-        val description: String = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_DESCRIPTION))
-        val location: String = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_LOCATION))
+        val imageLink: String? = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_PHOTO))
+        val description: String? = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_DESCRIPTION))
+        val location: String? = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_LOCATION))
 
         holder.card_desc.text = description
         holder.card_location.text = location
         Picasso.get()
-            .load(imageLink)
+            .load(imageLink!!)
             .placeholder(R.drawable.ic_picasso_placeholder)
             .error(R.drawable.ic_picasso_error)
             .into(holder.card_image)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(it.context, FullScreenActivity::class.java)
+            intent.putExtra(imageLink, "LinkPhoto")
+            intent.putExtra(description, "Description")
+            intent.putExtra(location, "Location")
+            it.context!!.startActivity(intent)
+        }
     }
 
     class DBViewHolder(itemView: View,

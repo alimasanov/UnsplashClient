@@ -1,21 +1,21 @@
 package com.alimasanov.unsplash.adapters
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.R
+import com.alimasanov.unsplash.db.UnsplashDB
 import com.alimasanov.unsplash.server.pojo.Photo
 import com.alimasanov.unsplash.ui.FullScreenActivity
 import com.squareup.picasso.Picasso
 
-class UnsplashAdapter(private val context: Context?, private var photos: List<Photo>?):
+class UnsplashAdapter(private val context: Context?, private var photos: List<Photo>?, private val db: SQLiteDatabase):
     RecyclerView.Adapter<UnsplashAdapter.UnsplashViewHolder>() {
 
     fun setNewList(list: List<Photo>?){
@@ -58,9 +58,20 @@ class UnsplashAdapter(private val context: Context?, private var photos: List<Ph
             holder.card_location.text = cardLoc
         } else holder.ll_main.removeAllViews()
 
+        holder.itemView.setOnLongClickListener{
+            val cv = ContentValues()
+            cv.put(UnsplashDB.COLUMN_PHOTO, photo.urls!!.small)
+            cv.put(UnsplashDB.COLUMN_DESCRIPTION, photo.description)
+            cv.put(UnsplashDB.COLUMN_LOCATION, "${photo.location!!.city} ${photo.location.country}")
+
+            db.insert(UnsplashDB.TABLE_NAME, null, cv)
+
+            true
+        }
+
         holder.itemView.setOnClickListener{
             val intent = Intent(it.context, FullScreenActivity::class.java)
-            intent.putExtra("LinkPhoto", photo.urls!!.full)
+            intent.putExtra("LinkPhoto", photo.urls!!.regular)
             intent.putExtra("Description", photo.description)
             intent.putExtra("CreatedAt", photo.created_at)
             intent.putExtra("UpdatedAt", photo.updated_at)

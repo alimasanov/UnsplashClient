@@ -11,10 +11,10 @@
 
         <ImageView
             android:id="@+id/full_image"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/todo"
-            android:src="@drawable/rick_and_morty_image" />
+            android:src="@drawable/ic_action_info" />
 
         <LinearLayout
             android:id="@+id/linear_main"
