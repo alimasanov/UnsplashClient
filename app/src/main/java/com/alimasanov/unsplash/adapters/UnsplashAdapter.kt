@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.R
@@ -16,6 +17,12 @@ import com.squareup.picasso.Picasso
 
 class UnsplashAdapter(private val context: Context?, private var photos: List<Photo>?):
     RecyclerView.Adapter<UnsplashAdapter.UnsplashViewHolder>() {
+
+    fun setNewList(list: List<Photo>?){
+        photos = list
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = UnsplashViewHolder(LayoutInflater
                                 .from(parent.context)
@@ -49,7 +56,7 @@ class UnsplashAdapter(private val context: Context?, private var photos: List<Ph
         } else if(photo.location?.country !== null && photo.location.city == null){
             val cardLoc: String? = photo.location.country
             holder.card_location.text = cardLoc
-        } else holder.ll.removeAllViews()
+        } else holder.ll_main.removeAllViews()
 
         holder.itemView.setOnClickListener{
             val intent = Intent(it.context, FullScreenActivity::class.java)
@@ -72,7 +79,7 @@ class UnsplashAdapter(private val context: Context?, private var photos: List<Ph
                              val card_image: ImageView = itemView.findViewById(R.id.card_image),
                              val card_desc: TextView = itemView.findViewById(R.id.card_desc),
                              val card_location: TextView = itemView.findViewById(R.id.card_location),
-                             val ll_main: LinearLayout = itemView.findViewById(R.id.ll_main),
+                             val ll_main: RelativeLayout = itemView.findViewById(R.id.ll_main),
                              val ll: LinearLayout = itemView.findViewById(R.id.ll)):
         RecyclerView.ViewHolder(itemView)
 }

@@ -1,93 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/full_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/rick_and_morty_image"
-        android:contentDescription="@string/todo" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/ff_description"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/full_image"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextIcon"
-            android:text="@string/fa_title"/>
-
-        <TextView
-            android:id="@+id/ff_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextIcon"
-            android:text="@string/fa_location"/>
-
-        <TextView
-            android:id="@+id/ff_created_at"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextIcon"
-            android:text="@string/fa_created_at"/>
-
-        <TextView
-            android:id="@+id/ff_updated_at"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fa_updated_at"/>
+            android:contentDescription="@string/todo"
+            android:src="@drawable/rick_and_morty_image" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:id="@+id/linear_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/ff_width"
+                android:id="@+id/ff_description"
+                style="@style/TextIcon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/fa_width"/>
+                android:text="@string/fa_title" />
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/linear_loacation"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fa_x"/>
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/ff_height"
-                android:layout_width="match_parent"
+                <TextView
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_location" />
+
+                <TextView
+                    android:id="@+id/ff_location"
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_created_at"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fa_height"/>
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_created_at" />
+
+                <TextView
+                    android:id="@+id/ff_created_at"
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_updated_at"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_updated_at" />
+
+                <TextView
+                    android:id="@+id/ff_updated_at"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_size"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ff_width"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_width" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_x" />
+
+                <TextView
+                    android:id="@+id/ff_height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_height" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_likes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_likes" />
+
+                <TextView
+                    android:id="@+id/ff_likes"
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear_downloads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_download" />
+
+                <TextView
+                    android:id="@+id/ff_download"
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fa_username" />
+
+                <TextView
+                    android:id="@+id/ff_username"
+                    style="@style/TextIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/ff_likes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextIcon"
-            android:text="@string/fa_likes"/>
-
-        <TextView
-            android:id="@+id/ff_download"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextIcon"
-            android:text="@string/fa_download"/>
-
-        <TextView
-            android:id="@+id/ff_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextIcon"
-            android:text="@string/fa_username"/>
-
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>
