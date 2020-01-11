@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.db.UnsplashDB
 import com.alimasanov.unsplash.R
 import com.alimasanov.unsplash.adapters.DBAdapter
+import com.alimasanov.unsplash.server.PhotoOperations
 
 class FavoriteFragment : Fragment() {
 
@@ -22,25 +23,12 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_favorite, container, false)
-        val unsplashDB: UnsplashDB? = UnsplashDB(context)
-        val db: SQLiteDatabase = unsplashDB!!.writableDatabase
         val recyclerView: RecyclerView = root.findViewById(R.id.fav_rv)
         recyclerView.apply {
             layoutManager = GridLayoutManager(context, 2)
         }
-        val dbAdapter = DBAdapter(context, getAllItems(db))
-        recyclerView.adapter = dbAdapter
+        recyclerView.adapter = PhotoOperations().loadFavoritePhotos(context)
 
         return root
-    }
-
-    private fun getAllItems(db: SQLiteDatabase): Cursor? {
-        return db.query(UnsplashDB.TABLE_NAME,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null)
     }
 }

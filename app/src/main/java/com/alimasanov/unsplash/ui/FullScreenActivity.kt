@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.alimasanov.unsplash.R
+import com.alimasanov.unsplash.server.PhotoOperations
 import com.squareup.picasso.Picasso
 
 class FullScreenActivity: AppCompatActivity(){
@@ -27,7 +28,7 @@ class FullScreenActivity: AppCompatActivity(){
         val downloads: TextView = findViewById(R.id.ff_download)
         val username: TextView = findViewById(R.id.ff_username)
 
-        val linearLocation: LinearLayout = findViewById(R.id.linear_loacation)
+        val linearLocation: LinearLayout = findViewById(R.id.linear_location)
         val linearCreatedAt: LinearLayout = findViewById(R.id.linear_created_at)
         val linearUpdatedAt: LinearLayout = findViewById(R.id.linear_updated_at)
         val linearLikes: LinearLayout = findViewById(R.id.linear_likes)
@@ -35,41 +36,42 @@ class FullScreenActivity: AppCompatActivity(){
         val linearUsername: LinearLayout = findViewById(R.id.linear_username)
 
         val link: String = bundle!!.get("LinkPhoto").toString()
+        val photo = PhotoOperations().getPhotoById(link)
         Picasso.get()
-            .load(link)
+            .load(photo!!.urls!!.raw)
             .placeholder(R.drawable.ic_picasso_placeholder)
             .error(R.drawable.ic_picasso_error)
             .into(fullImage)
 
-        if(bundle.get("Description").toString() == null){
+        if(photo.description == null){
             linearMain.removeView(description)
-        } else description.text = ("Description: ${bundle.get("Description").toString()}")
+        } else description.text = (photo.description)
 
-        if(bundle.get("Location").toString() == null) {
+        if(PhotoOperations().locationNormalize(photo) == null) {
             linearLocation.removeAllViews()
-        } else location.text = bundle.get("Location").toString()
+        } else location.text = PhotoOperations().locationNormalize(photo)
 
-        if(bundle.get("CreatedAt").toString() == null) {
+        if(photo.created_at == null) {
             linearCreatedAt.removeAllViews()
-        } else createdAt.text = bundle.get("CreatedAt").toString()
+        } else createdAt.text = photo.created_at
 
-        if(bundle.get("UpdatedAt").toString() == null) {
+        if(photo.updated_at == null) {
             linearUpdatedAt.removeAllViews()
-        } else updatedAt.text = bundle.get("UpdatedAt").toString()
+        } else updatedAt.text = photo.updated_at
 
-        width.text = bundle.get("Width").toString()
-        height.text = bundle.get("Height").toString()
+        width.text = photo.width.toString()
+        height.text = photo.height.toString()
 
-        if(bundle.get("Likes").toString() == null) {
+        if(photo.likes == null) {
             linearLikes.removeAllViews()
-        } else likes.text = bundle.get("Likes").toString()
+        } else likes.text = photo.likes.toString()
 
-        if(bundle.get("Downloads").toString() == null) {
+        if(photo.downloads == null) {
             linearDownloads.removeAllViews()
-        } else downloads.text = bundle.get("Downloads").toString()
+        } else downloads.text = photo.downloads.toString()
 
-        if(bundle.get("Username").toString() == null) {
+        if(photo.user!!.username == null) {
             linearUsername.removeAllViews()
-        } else username.text = bundle.get("Username").toString()
+        } else username.text = photo.user.username
     }
 }

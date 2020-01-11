@@ -12,7 +12,7 @@ interface NetworkEndpoints {
     ): Call<List<Photo>>
 
     @GET("/photos/:id")
-    fun getPhoto(
+    fun getPhotoById(
         @Query("id") id: String
     ): Call<Photo>
 }

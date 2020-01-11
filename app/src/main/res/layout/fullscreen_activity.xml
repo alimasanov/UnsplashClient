@@ -13,8 +13,7 @@
             android:id="@+id/full_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
-            android:src="@drawable/ic_action_info" />
+            android:contentDescription="@string/todo" />
 
         <LinearLayout
             android:id="@+id/linear_main"
@@ -29,9 +28,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/fa_title" />
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey"/>
             <LinearLayout
-                android:id="@+id/linear_loacation"
+                android:id="@+id/linear_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -48,6 +50,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey"/>
             <LinearLayout
                 android:id="@+id/linear_created_at"
                 android:layout_width="wrap_content"
@@ -82,6 +88,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey"/>
             <LinearLayout
                 android:id="@+id/linear_size"
                 android:layout_width="wrap_content"
@@ -105,7 +115,10 @@
                     android:layout_height="wrap_content"
                     android:text="@string/fa_height" />
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey"/>
             <LinearLayout
                 android:id="@+id/linear_likes"
                 android:layout_width="wrap_content"
@@ -142,7 +155,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGrey"/>
             <LinearLayout
                 android:id="@+id/linear_username"
                 android:layout_width="wrap_content"

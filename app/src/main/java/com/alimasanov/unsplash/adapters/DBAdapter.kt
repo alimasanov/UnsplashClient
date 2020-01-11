@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.db.UnsplashDB
 import com.alimasanov.unsplash.R
+import com.alimasanov.unsplash.server.PhotoOperations
 import com.alimasanov.unsplash.ui.FullScreenActivity
 import com.squareup.picasso.Picasso
 
@@ -30,23 +32,18 @@ class DBAdapter(private val context: Context?,
         if(!cursor!!.moveToPosition(position)) {
             return
         }
-        val imageLink: String? = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_PHOTO))
-        val description: String? = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_DESCRIPTION))
-        val location: String? = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_LOCATION))
+        val imageLink: String? = cursor.getString(cursor.getColumnIndex(UnsplashDB.COLUMN_PHOTO_ID))
+        val photo = PhotoOperations().getPhotoById(imageLink)
 
-        holder.card_desc.text = description
-        holder.card_location.text = location
-        Picasso.get()
-            .load(imageLink!!)
-            .placeholder(R.drawable.ic_picasso_placeholder)
-            .error(R.drawable.ic_picasso_error)
-            .into(holder.card_image)
+        PhotoOperations().initCard(photo,
+            holder.card_image,
+            holder.card_desc,
+            holder.card_location,
+            holder.rl_main)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, FullScreenActivity::class.java)
             intent.putExtra(imageLink, "LinkPhoto")
-            intent.putExtra(description, "Description")
-            intent.putExtra(location, "Location")
             it.context!!.startActivity(intent)
         }
     }
@@ -54,6 +51,7 @@ class DBAdapter(private val context: Context?,
     class DBViewHolder(itemView: View,
                        val card_image: ImageView = itemView.findViewById(R.id.card_image),
                        val card_desc: TextView = itemView.findViewById(R.id.card_desc),
-                       val card_location: TextView = itemView.findViewById(R.id.card_location)):
+                       val card_location: TextView = itemView.findViewById(R.id.card_location),
+                       val rl_main: RelativeLayout = itemView.findViewById(R.id.ll_main)):
         RecyclerView.ViewHolder(itemView)
 }
