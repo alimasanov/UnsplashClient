@@ -15,13 +15,10 @@ import com.alimasanov.unsplash.server.pojo.Photo
 import com.alimasanov.unsplash.ui.FullScreenActivity
 import com.squareup.picasso.Picasso
 
-class UnsplashAdapter(private val context: Context?, private var photos: List<Photo>?, private val db: SQLiteDatabase):
+class UnsplashAdapter(private val context: Context?,
+                      private var photos: List<Photo>?,
+                      private val db: SQLiteDatabase):
     RecyclerView.Adapter<UnsplashAdapter.UnsplashViewHolder>() {
-
-    fun setNewList(list: List<Photo>?){
-        photos = list
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = UnsplashViewHolder(LayoutInflater

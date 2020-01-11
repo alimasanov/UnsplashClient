@@ -1,24 +1,16 @@
 package com.alimasanov.unsplash.ui.photo
 
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alimasanov.unsplash.R
-import com.alimasanov.unsplash.adapters.UnsplashAdapter
-import com.alimasanov.unsplash.db.UnsplashDB
-import com.alimasanov.unsplash.server.NetworkEndpoints
-import com.alimasanov.unsplash.server.pojo.Photo
-import com.alimasanov.unsplash.server.UnsplashClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.create
+import com.alimasanov.unsplash.server.PhotoOperations
+import com.alimasanov.unsplash.ui.GridItemDecoration
 
 class PhotoFragment : Fragment() {
 
@@ -31,26 +23,12 @@ class PhotoFragment : Fragment() {
 
         val recyclerView: RecyclerView = root.findViewById(R.id.photo_recycler_view)
         recyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+            addItemDecoration(GridItemDecoration(10, 2))
         }
 
-        val unsplashDB: UnsplashDB? = UnsplashDB(context)
-        val db: SQLiteDatabase = unsplashDB!!.writableDatabase
-
-        val networkEndpoints: NetworkEndpoints = UnsplashClient().getUnsplashClient().create()
-        val photoList = networkEndpoints.getRandomPhotos(30)
-
-
-        photoList.enqueue(object: Callback<List<Photo>>{
-            override fun onFailure(call: Call<List<Photo>>, t: Throwable) {
-
-            }
-
-            override fun onResponse(call: Call<List<Photo>>, response: Response<List<Photo>>) {
-                val unsplashAdapter = UnsplashAdapter(context, response.body(), db)
-                recyclerView.adapter = unsplashAdapter
-            }
-        })
+        val photoOperations = PhotoOperations()
+        photoOperations.loadRandomPhotos(context, recyclerView, 30)
 
         return root
     }
