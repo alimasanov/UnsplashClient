@@ -1,4 +1,4 @@
-package com.alimasanov.unsplash.ui
+package com.alimasanov.unsplash.view
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView

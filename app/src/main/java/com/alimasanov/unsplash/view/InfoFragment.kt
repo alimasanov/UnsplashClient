@@ -1,4 +1,4 @@
-package com.alimasanov.unsplash.ui.info
+package com.alimasanov.unsplash.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
