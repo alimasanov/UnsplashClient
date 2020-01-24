@@ -3,6 +3,7 @@ package com.alimasanov.unsplash.server
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -11,7 +12,7 @@ import com.alimasanov.unsplash.R
 import com.alimasanov.unsplash.adapters.DBAdapter
 import com.alimasanov.unsplash.adapters.UnsplashAdapter
 import com.alimasanov.unsplash.db.UnsplashDB
-import com.alimasanov.unsplash.server.pojo.Photo
+import com.alimasanov.unsplash.model.Photo
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -66,11 +67,12 @@ class PhotoOperations {
 
         val networkEndpoints: NetworkEndpoints = UnsplashClient().getUnsplashClient().create()
         val callPhoto = networkEndpoints.getPhotoById(photo_id!!)
-        var photo: Photo? = Photo()
+        var photo: Photo? =
+            Photo()
 
         callPhoto.enqueue(object: Callback<Photo>{
             override fun onFailure(call: Call<Photo>, t: Throwable) {
-
+                Log.d("unsplasherr", t.localizedMessage!!)
             }
 
             override fun onResponse(call: Call<Photo>, response: Response<Photo>) {

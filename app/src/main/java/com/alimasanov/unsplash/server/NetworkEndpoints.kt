@@ -1,8 +1,9 @@
 package com.alimasanov.unsplash.server
 
-import com.alimasanov.unsplash.server.pojo.Photo
+import com.alimasanov.unsplash.model.Photo
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface NetworkEndpoints {
@@ -11,8 +12,8 @@ interface NetworkEndpoints {
         @Query("count") count: Int
     ): Call<List<Photo>>
 
-    @GET("/photos/:id")
+    @GET("/photos/{id}")
     fun getPhotoById(
-        @Query("id") id: String
+        @Path("id") id: String?
     ): Call<Photo>
 }
