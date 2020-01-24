@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.R
 import com.alimasanov.unsplash.db.UnsplashDB
 import com.alimasanov.unsplash.server.PhotoOperations
-import com.alimasanov.unsplash.server.pojo.Photo
-import com.alimasanov.unsplash.ui.FullScreenActivity
-import com.squareup.picasso.Picasso
+import com.alimasanov.unsplash.model.Photo
+import com.alimasanov.unsplash.view.FullScreenActivity
+import java.io.Serializable
 
 class UnsplashAdapter(private val context: Context?,
                       private var photos: List<Photo>?,
@@ -47,7 +48,7 @@ class UnsplashAdapter(private val context: Context?,
         }
         holder.itemView.setOnClickListener{
             val intent = Intent(it.context, FullScreenActivity::class.java)
-            intent.putExtra("LinkPhoto", photo.id)
+            intent.putExtra("photo", photo)
             it.context.startActivity(intent)
         }
     }

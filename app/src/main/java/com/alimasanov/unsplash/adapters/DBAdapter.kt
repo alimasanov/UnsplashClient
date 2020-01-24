@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alimasanov.unsplash.db.UnsplashDB
 import com.alimasanov.unsplash.R
 import com.alimasanov.unsplash.server.PhotoOperations
-import com.alimasanov.unsplash.ui.FullScreenActivity
-import com.squareup.picasso.Picasso
+import com.alimasanov.unsplash.view.FullScreenActivity
 
 class DBAdapter(private val context: Context?,
                 private val cursor: Cursor?): RecyclerView.Adapter<DBAdapter.DBViewHolder>() {
@@ -43,7 +42,7 @@ class DBAdapter(private val context: Context?,
 
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, FullScreenActivity::class.java)
-            intent.putExtra(imageLink, "LinkPhoto")
+            intent.putExtra("photo", photo)
             it.context!!.startActivity(intent)
         }
     }
