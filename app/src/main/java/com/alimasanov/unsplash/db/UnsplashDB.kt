@@ -4,10 +4,10 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class UnsplashDB(context: Context?): SQLiteOpenHelper(context,
+class UnsplashDB(context: Context?): SQLiteOpenHelper(
+    context,
     DB_NAME, null,
-    DB_VERSION
-) {
+    DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
         val createUnsplashTable = "CREATE TABLE $TABLE_NAME (                    " +
