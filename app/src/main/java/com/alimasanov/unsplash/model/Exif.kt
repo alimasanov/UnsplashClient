@@ -1,4 +1,6 @@
-package com.alimasanov.unsplash.server.pojo
+package com.alimasanov.unsplash.model
+
+import java.io.Serializable
 
 data class Exif(
     val aperture: String? = null,
@@ -7,4 +9,4 @@ data class Exif(
     val iso: Int? = null,
     val make: String? = null,
     val model: String? = null
-)
+): Serializable

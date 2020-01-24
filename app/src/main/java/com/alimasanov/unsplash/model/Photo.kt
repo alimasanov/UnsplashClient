@@ -1,4 +1,6 @@
-package com.alimasanov.unsplash.server.pojo
+package com.alimasanov.unsplash.model
+
+import java.io.Serializable
 
 data class Photo(
     val color: String? = null,
@@ -16,4 +18,4 @@ data class Photo(
     val urls: Urls? = null,
     val links: Links? = null,
     val user: User? = null
-)
+): Serializable

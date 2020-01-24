@@ -1,4 +1,6 @@
-package com.alimasanov.unsplash.server.pojo
+package com.alimasanov.unsplash.model
+
+import java.io.Serializable
 
 data class User(
     val bio: String? = null,
@@ -12,4 +14,4 @@ data class User(
     val updated_at: String? = null,
     val username: String? = null,
     val links: UserLinks? = null
-)
+): Serializable
